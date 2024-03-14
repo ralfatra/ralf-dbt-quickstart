@@ -25,6 +25,7 @@ payments as (
 
 final as (
     select 
+      o.order_date,
       c.customer_id,
       p.order_id,
       sum(p.amount) as amount
@@ -32,12 +33,14 @@ final as (
     inner join orders o on p.order_id = o.order_id 
     inner join customers c on o.customer_id = c.customer_id
     group by 
+      o.order_date,
       c.customer_id,
       p.order_id
 
 ) 
 
 select * from final
+order 1
 
 /*SELECT
   O.ID AS order_id,
