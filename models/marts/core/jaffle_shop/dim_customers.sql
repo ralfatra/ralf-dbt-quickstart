@@ -1,3 +1,11 @@
+/*{{ 
+    config(
+        
+        materialized='table'
+       
+    ) 
+}} */
+ -- schema='jaffle_shop'
 with customers as (
 
     select * from {{ ref('stg_js_customers')}}
