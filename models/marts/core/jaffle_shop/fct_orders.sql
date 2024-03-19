@@ -7,12 +7,7 @@
 }}*/
 
 -- somente o primeiro recebe o with
-with customers as (
-
-    select * from {{ ref('dim_customers')}}
-
-),
-orders as (
+with orders as (
 
     select * from {{ ref('stg_js_orders')}}
 
@@ -20,6 +15,12 @@ orders as (
 payments as (
 
     select * from {{ ref('stg_js_payments')}}
+
+),
+
+customers as (
+
+    select * from {{ ref('dim_customers')}}
 
 ),
 
@@ -37,10 +38,10 @@ final as (
       c.customer_id,
       p.order_id
 
-) 
+)
 
 select * from final
-order 1
+order by order_date
 
 /*SELECT
   O.ID AS order_id,

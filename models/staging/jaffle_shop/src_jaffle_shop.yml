@@ -1,0 +1,7 @@
+sources:
+  - name: raw
+    database: csf-lab
+    schema: raw
+    tables:
+      - name: customers
+      - name: orders
