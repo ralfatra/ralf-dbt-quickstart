@@ -24,7 +24,8 @@ customer_orders as (
         customer_id,
         min(order_date) as first_order_date,
         max(order_date) as most_recent_order_date,
-        count(order_id) as number_of_orders
+        count(order_id) as number_of_orders,
+        FORMAT_DATE('%Y-%m-%d %H:%M:%S',CURRENT_TIMESTAMP()) AS dt_proccess
     from orders
     group by 1
 

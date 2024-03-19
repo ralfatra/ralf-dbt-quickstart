@@ -29,7 +29,8 @@ final as (
       o.order_date,
       c.customer_id,
       p.order_id,
-      sum(p.amount) as amount
+      sum(p.amount) as amount,
+      FORMAT_DATE('%Y-%m-%d %H:%M:%S',CURRENT_TIMESTAMP()) AS dt_proccess
     from payments p
     inner join orders o on p.order_id = o.order_id 
     inner join customers c on o.customer_id = c.customer_id

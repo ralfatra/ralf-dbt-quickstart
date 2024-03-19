@@ -11,8 +11,9 @@ stg_fim as (
   
   select 
   id as customer_id,
-  first_name as primeiro_nome,
-  last_name as ultimo_nome
+  first_name,
+  last_name,
+  current_timestamp() as _etl_loaded_at
   from src
 )
 
