@@ -5,7 +5,8 @@ sources:
     tables:
       - name: customers
       - name: orders
-        loaded_at_field: _etl_loaded_at
+      - name: payments
+        loaded_at_field: created
         freshness:
           warn_after: {count: 12, period: hour}
           error_after: {count: 24, period: hour}
