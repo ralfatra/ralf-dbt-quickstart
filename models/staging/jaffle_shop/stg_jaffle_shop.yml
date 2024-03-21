@@ -1,0 +1,23 @@
+models:
+  - name: stg_js_customers
+    columns: 
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_js_orders
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values:
+                - completed
+                - shipped
+                - returned
+                - return_pending
+                - placed
