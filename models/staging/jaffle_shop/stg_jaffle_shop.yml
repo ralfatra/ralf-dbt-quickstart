@@ -1,18 +1,23 @@
 models:
   - name: stg_js_customers
+    description: one unique customer per row
     columns: 
       - name: customer_id
+        description: primary key for stg_js_customers
         tests:
           - unique
           - not_null
 
   - name: stg_js_orders
+    description: one unique order per row
     columns:
       - name: order_id
+        description: primary key for stg_js_orders
         tests:
           - unique
           - not_null
       - name: status
+        description: '{{ doc("order_status")}}'
         tests:
           - accepted_values:
               values:
@@ -21,3 +26,8 @@ models:
                 - returned
                 - return_pending
                 - placed
+      - name: customer_id
+        tests:
+          - relationships:
+              to: ref('stg_js_customers')
+              field: customer_id

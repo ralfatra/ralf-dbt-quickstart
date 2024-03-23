@@ -1,9 +1,26 @@
+version: 2
+
 sources:
   - name: raw
+    description: a clone of a GCP dataset csf-lab camada raw
     database: csf-lab
     schema: raw
     tables:
       - name: customers
+        description: the raw customers data
+        columns:
+          - name: id
+            description: primary key column for customers data
+            tests:
+              - unique
+              - not_null
       - name: orders
+        description: the raw orders data
+        columns:
+          - name: id
+            description: primary key column for orders data
+            tests:
+              - unique
+              - not_null
       - name: payments
-
+        description: the raw payments data

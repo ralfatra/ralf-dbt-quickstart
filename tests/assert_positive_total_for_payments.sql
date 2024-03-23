@@ -7,4 +7,4 @@ select
     sum(amount) as total_amount
 from payments
 group by 1
-having not(total_amount >= 0)
+having total_amount < 0
